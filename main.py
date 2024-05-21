@@ -2,10 +2,7 @@ import sys
 import keyboard
 from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
-
-def hoge():
-    print("Function hoge() executed")
+from browser import Browser
 
 class SystemTrayApp:
     def __init__(self):
@@ -30,7 +27,8 @@ class SystemTrayApp:
         keyboard.add_hotkey('ctrl+shift+h', self.on_hotkey)
 
     def on_hotkey(self):
-        hoge()
+        browser = Browser()
+        browser.open()
 
     def run(self):
         sys.exit(self.app.exec_())
