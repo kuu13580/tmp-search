@@ -3,6 +3,7 @@ import keyboard
 from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction
 from PyQt5.QtGui import QIcon
 from browser import Browser
+import test_rc
 
 class SystemTrayApp:
     def __init__(self):
@@ -11,7 +12,7 @@ class SystemTrayApp:
 
         # System tray icon
         self.tray = QSystemTrayIcon()
-        self.tray.setIcon(QIcon("icon.png"))  # アイコンのパスを設定
+        self.tray.setIcon(QIcon(':icon.png'))  # アイコンのパスを設定
 
         # Menu
         self.menu = QMenu()
