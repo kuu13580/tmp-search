@@ -13,15 +13,19 @@ class Browser:
     
     def open(self):
         self.driver.get(self.url)
+        chrome_window = gw.getWindowsWithTitle("Google - Google Chrome")[0]
+        chrome_window.minimize()
+        chrome_window.restore()
         self.thread = threading.Thread(target=self.auto_close)
         self.thread.start()
     
     def auto_close(self):
-        chrome_window = gw.getWindowsWithTitle("Google Chrome")[0]
+        chrome_window = gw.getWindowsWithTitle("Google - Google Chrome")[0]
+        time.sleep(5)
         while True:
             # ウィンドウが非アクティブになったらウィンドウを閉じる
             if not chrome_window.isActive:
-                self.close()
+                chrome_window.minimize()
                 break
             time.sleep(1)  # 1秒ごとにチェック
         print("Browser closed")
